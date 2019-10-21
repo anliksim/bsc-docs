@@ -1,0 +1,28 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "strict": 0,
+    "no-console": "warn",
+    "quotes": [
+      "warn",
+      "single"
+    ],
+    "react/prop-types": "warn",
+    "no-unused-vars": "warn"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": [],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
