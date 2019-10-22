@@ -6,11 +6,9 @@ draft: false
 author: Simon Anliker
 tags:
   - ads
+  - de
 ---
 
-
-
-# Graphen
 
 * Shortest Path: Kürzeste Verbindung von A nach B
 * Topological Sort: Reihenfolge von Tätigkeiten aus einem Netzplan erstellen

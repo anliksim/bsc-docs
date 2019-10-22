@@ -6,9 +6,10 @@ draft: false
 author: Simon Anliker
 tags:
   - ads
+  - de
 ---
 
-# Hashtabellen
+## Hashtabellen
 
 * Vorteile: Suchen und Einfügen O(1), degeneriert kaum zur Liste, geringer Aufwand zur Implementierung (vgl. Binäre Bäume)
 * Nachteile: Suche nur mit vollständigem Schlüssel, geordnete Ausgabe nicht möglich, kleinstes Element finden nicht einfach
