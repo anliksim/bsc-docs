@@ -8,6 +8,14 @@ To build and serve the production version
     
     npm run build
     npm run serve
+    
+To test the production version
+
+    firebase serve
+
+To deploy the production version
+
+    firebase deploy
 
 
 ## Credits
