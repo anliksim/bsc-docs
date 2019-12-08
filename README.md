@@ -1,5 +1,13 @@
 # BSc Docs
 
+For development
+
+    npm run develop
+    
+To build and serve the production version
+    
+    npm run build
+    npm run serve
 
 
 ## Credits

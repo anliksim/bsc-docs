@@ -1,4 +1,5 @@
 .idea/
+.firebase/
 .cache/
 node_modules/
 public/
