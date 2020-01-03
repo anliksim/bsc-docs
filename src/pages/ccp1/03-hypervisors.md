@@ -100,3 +100,120 @@ Cons:
 - Anything that relies on host OS
 
 Examples: Oracle VM VirtualBox, Microsoft Virtual PC
+
+
+## Virtualizing X86
+
+X86 architecture supports resource management and access rights to memory and hardware via privileged CPU instructions.
+- Ring 3: Applications
+- Ring 2: Device drivers
+- Ring 1: Device drivers
+- Ring 0: Kernel
+
+Virtualizing privileged instructions is complicated. An OS within a VM needs to be prevented from directly executing privileged instructions i.e. not execute instructions in Ring 0.
+
+### Binary Translation
+
+Traps sensitive instructions and translated kernel code in real-time to replace non-virtualizable instructions with new instructions that have the intended effect on the virtual hardware.
+
+- User level code is executed on the processor
+- VMM provides VM all needed service (virtual BIOS, devices, memory management)
+- The guest OS is not aware of the virtualization
+- Very heavy
+
+
+### Hardware Extension
+
+Privileged instructions run with a new CPU execution mode feature. Virtualization with Hardware Extension is known as Hardware Virtual Machines (HVM).
+
+- VMM runs in a new root mode below Ring 0
+- Privileged calls are trapped
+- Requires not binary translation or paravirtualisation
+- Guest state is stored in Virtual Machine Control Structures (on Intel VT) or Virtual Machine Control Blocks (on AMD-V)
+
+### Memory virtualization
+
+VMM maintains Shadow Page Table. MMU looks directly into the Shadow Page Table for virtual address accesses from the guest OS.
+
+Two types of memory address translations:
+- Virtual to Physical: VM Page Table of virtual machines OS
+- Physical to Host: Managed by VMM (Extended/Nested Page Table)
+
+Virtual and physical addresses are per virtual machine. Host addresses are per physical host.
+
+Hardware Extensions:
+- Intel Extended Page Tables (EPT)
+- AMD Rapid Virtualization Indexing (RVI)
+
+
+### Full-Virtualization
+
+Complete simulation of the underlying hardware. Largely dependent on computer architecture.
+
+
+### Para-Virtualization
+
+Execute Hypercalls (sensitive instructions) via new interface (HCI) between VMM and OS. That way the guest kernel knows that it runs in a VM and can directly access hardware features.
+
+AWS uses PV on HVM drivers (i.e mix para with full) for same or better performance than with paravitualisation.
+
+
+## VMM Overview
+
+|Name|Virt. Type|Installation|Guest Arch|Openstack|
+|:---|:---|:---|:---|:---|
+|KVM|Full|Bare metal|Same as host|Default|
+|QEMU|Emulation|Hosted|x86(-64),ARM|Yes|
+|Xen|Para/Full(HVM mode)|Bare metal|Same as host|Yes|
+|VMware ESXi|Para/Full(HVM mode)|Bare metal|x86(-64)|Yes|
+|Microsoft Hyper-V|Full|Hosted|x86-64|Yes|
+
+### QEMU
+
+Quick Emulator (QEMU) is a generic and open source machine emulator and virtualizer based on Binary Translation and SoftMMU
+- Full-system emulation
+- User-mode emulation
+- Virtualization (runs KVM and Xen VMs)
+
+### KVM
+
+Kernel-based Virtual Machine (KVM) is a Linux based open source hypervisor that was built as a cheap alternative to Intel and AMD vurtualization extensions.
+
+Provides an interface to the Linux kernel via kernel module. CPU and Memoy access is exposed via `/dev/kvm`. The VM is implemented as regular Linux process. 
+
+KVM does not perform any emulation or virtualization. 
+
+#### KVM-QEMU
+
+Combining KVM and QEMU gives the guest OS:
+- Resource scheduling: Through the host OS scheduler
+- Huge Page table (HPT) support: Handle large amounts of (v)RAM
+- Non-uniform Memory Architecture (NUMA): Optimized RAM access
+- Kernel Same-page Merging (KSM): Memory deduplication for VMs
+- Integrates CGroups: Controlled access and allocation of system resources
+- Integrates network namespaces: Controlled visibility and minimum network guarantees per VM
+
+To start a VM:
+    
+    qemu-system-x86_64 -enable-kvm [diskimage]
+
+### Libvirt
+
+Libvirt is a hypervisor agnostic, multi-language virtualization library managing VMs.
+
+Virsh is the virtual shell for for managing VMs based on Libvirt
+
+Libvirtd is a deamon service for managing guests and virtual networks based on Libvirt
+
+Virtual Machine Manager (virt-manager) is a desktop interface for managing VMs based on Libvirt
+
+Libvirt is used extensively by OpenStack Nova
+
+
+Creating a VM with Virsh (requires a definition file e.g. `my_vm.xml`):
+
+    virsh create my_vm.xml
+    virsh start my_vm.xml
+    virsh define my_vm.xml
+
+    
