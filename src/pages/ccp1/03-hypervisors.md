@@ -2,7 +2,7 @@
 path: "/ccp1/hypervisors"
 title: "CCP1 Cloud Compute (Hypervisors)"
 date: "2020-01-03"
-draft: true
+draft: false
 author: Simon Anliker
 tags:
   - ccp1
