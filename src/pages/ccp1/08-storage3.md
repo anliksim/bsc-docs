@@ -1,7 +1,7 @@
 ---
 path: "/ccp1/storage3"
 title: "CCP1 Container Storage"
-date: "2019-01-03"
+date: "2020-01-03"
 draft: true
 author: Simon Anliker
 tags:

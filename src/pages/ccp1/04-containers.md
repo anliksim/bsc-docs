@@ -1,7 +1,7 @@
 ---
 path: "/ccp1/containers"
 title: "CCP1 Cloud Compute (Containers)"
-date: "2019-01-03"
+date: "2020-01-03"
 draft: true
 author: Simon Anliker
 tags:

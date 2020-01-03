@@ -1,7 +1,7 @@
 ---
 path: "/ccp1/openstack"
 title: "CCP1 OpenStack"
-date: "2019-01-03"
+date: "2020-01-03"
 draft: false
 author: Simon Anliker
 tags:
