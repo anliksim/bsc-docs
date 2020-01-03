@@ -9,6 +9,8 @@ tags:
   - cloud
 ---
 
+<!-- CCI -->
+
 # Cloud Computing
 
 ## CAPEX

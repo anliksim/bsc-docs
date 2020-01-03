@@ -10,6 +10,8 @@ tags:
   - openstack
 ---
 
+<!-- OSTK -->
+
 # Open Stack
 
 - Keystone: Identity service
