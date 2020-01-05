@@ -43,6 +43,59 @@ Docker
 
 ## Container Composition
 
+### Docker Compose
+
+Describe with `docker-compose.yml` files
+- set of docker containers
+- build and run config
+- dependencies
+- instance details
+    - replicas
+    - restart policies
+    - placement
+    - networking
+    - volumes
+    
+   
+    version: '2.1
+    services:
+        myservice
+        image: myimage
+        restart: always
+        depends_on:
+            myotherservice
+        environment:
+            VAR:value
+        ports:
+            80:443
+        logging:
+            optoins:
+                max-size: "10m"
+    
+Compose tools for log merging and command execution per instance.    
+
+    docker-compose up
+    docker-compose down --volumes
 
 
 ## Container Ecosystem
+
+Sites on which containerised service implementations are offered: Hubs, Stores, Exchanges, Marketplaces
+
+
+    Containerised Application    
+    ├── Monolithic
+    ├── Microservices
+    │   ├── Master-Slave
+    │   ├── Nested-Container
+    
+
+Related Processes Per Container (RPPC)
+
+
+### Container-Native Architecture
+
+Containers in VMs - simple but limited, more complex, single point of failures
+
+Cloud-native with data-center as a single Docker host, routing and discovery components
+
