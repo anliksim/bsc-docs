@@ -1,7 +1,7 @@
 ---
 path: "/scad/quality"
 title: "SCAD Container Quality"
-date: "2020-01-04"
+date: "2020-01-05"
 draft: false
 author: Simon Anliker
 tags:

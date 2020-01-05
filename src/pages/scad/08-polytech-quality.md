@@ -1,7 +1,7 @@
 ---
 path: "/scad/polytechquality"
 title: "SCAD Polytech Quality"
-date: "2020-01-04"
+date: "2020-01-05"
 draft: false
 author: Simon Anliker
 tags:
