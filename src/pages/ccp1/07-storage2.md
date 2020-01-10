@@ -1,8 +1,8 @@
 ---
 path: "/ccp1/storage2"
 title: "CCP1 Storage 2 (Swift, Glance)"
-date: "2020-01-03"
-draft: true
+date: "2020-01-08"
+draft: false
 author: Simon Anliker
 tags:
   - ccp1
@@ -179,9 +179,114 @@ Storage backends
 
 ## OpenStack Ceph
 
+Unified object, block, file store on top of object-based system. All data is stored as objects in a flat namespace.
+
+RADOS: Reliable Autonomic Distributed Object Store
+
+Intergrates with OpenStack Services via python library librdb
+
+
 ### Architecture
+
+Monitor daemon (MON):
+- Deploy in small, odd number of instances
+- Does not serve stored objects to client
+- Maintains state and cluster membership
+- Provides consensus for distributed decision making
+
+Object storage device daemon (OSD):
+- Minimum three in a cluster
+- One per disk or RAID group
+- Serves stored objects to clients
+- Intelligently peer to perform replication tasks
+
+Meta Data Service (MDS):
+- Only requires for CephFS/ shared filesystems
+- Does not server file data to clients
+- Manages metadata for POSIX-compliant shared filesystems
+- Stores metadata in RADOS
 
 ### Interfaces
 
-### CRUSH
+Native
+- Provides direct access to RADOS for apps
+- librados, native support for C, Java etc
+- Local, no HTTP overhead
+
+Object
+- REST-based interface to RADOSGW daemon
+- Supports buckets and user management
+- Provides S3 and Swift compatible interfaces
+
+Block
+- RADOS Block device (RBD, librdb)
+- Storage of virtual disks in RADOS
+- Images are striped across cluster
+- Support by QEMU/KVM, OpenStack
+
+File
+- Provided by CephFS (libcephfs)
+- Linux kernel client (`mount -t ceph 192.168.1.5:/ /mnt/tank`)
+    - Can be exported with NFS or samba
+- CephFS library for apps (libcephfs.so)
+
+
+### Concepts
+
+No central gateway for data client operations
+- Operation with MONs require only latest version of cluster map
+- Direct data exchange with OSDs
+- OSDs handle replication of objects to other nodes for availability
+
+Objects placement is dynamically computed
+- No central lookup table unlike Swift rings
+- Data localisation with CRUSH
+- Theoretically unlimited scalability
+
+
+Devices: Physical location of objects
+
+Placement groups (PG): Logical concept to group devices
+
+Pools: Logical partitions with specific settings (ownership, replicas, PG number, CRUSH ruleset per PG, contains PGs)
+
+CRUSH rulesets: Algorithm to select physical OSD where to store data, uses specific map configuration of DCs/buckets
+
+Buckets: Physical hardware element in the hierarchy
+
+
+Client runs CRUSH algorithm to determine where to write the object to. Primary OSD runs the algorithm too to determine the PGs for replicas. Same for reading and rebalancing.
+
+#### CRUSH
+
+Controlled Replication Under Scalable Hashing (CRUSH) 
+- Decides where to store and retrieve data in a RADOS cluster.
+- Enabled clients to directly communicate with OSDs
+
+Two parts:
+
+CRUSH Algorithm
+- Stateless, only needs CRUSH Map
+- Statistically uniform distribution (hash-based)
+- Rule-based configuration
+- Similar to consistent mapping in Swift Rings
+- Operates upon CRUSH Map, aware of cluster topology
+
+CRUSH Map
+- Location and topology of OSDs
+    - defines devices
+    - defines bucket types
+    - defines buckets
+    - defines rules
+- Input to the CRUSH algorithm
+- Defined in a plain text file, freely defined by the operator
+- Can be retrieved and edited
+
+
+File -> Objects -> Placement Groups -> OSDs
+
+1. File is broken into objects
+2. Objects are mapped into PGs using simple hash function with adjustable bit-mask to control nr of PGs (`hash(objId) & mask = pgid`)
+3. PGs are assigned to OSDs using the CRUSH algorithm/map (`CRUSH(pgid, CRUSHMAP) = [osd_x, osd_y]`)
+
 

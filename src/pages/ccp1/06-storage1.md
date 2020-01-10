@@ -1,8 +1,8 @@
 ---
 path: "/ccp1/storage1"
 title: "CCP1 Storage 1 (Ephemeral, Cinder)"
-date: "2020-01-03"
-draft: true
+date: "2020-01-07"
+draft: false
 author: Simon Anliker
 tags:
   - ccp1
