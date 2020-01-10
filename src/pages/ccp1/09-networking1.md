@@ -2,7 +2,7 @@
 path: "/ccp1/networking1"
 title: "CCP1 DC Networking"
 date: "2020-01-10"
-draft: true
+draft: false
 author: Simon Anliker
 tags:
   - ccp1
