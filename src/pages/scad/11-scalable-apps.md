@@ -1,6 +1,6 @@
 ---
-path: "/scad/dependencies"
-title: "SCAD Service Dependencies"
+path: "/scad/scalability"
+title: "SCAD Scalable Cloud Apps"
 date: "2020-01-18"
 draft: false
 author: Simon Anliker
@@ -39,7 +39,7 @@ Scaling for app packages/functions
 - Configurable
 
 Vertical Scaling 
-- Hypervisor memoery (e.g. KVM `setmem <xG> --live`)
+- Hypervisor memory (e.g. KVM `setmem <xG> --live`)
 - Hypervisor processor (e.g. `cpu_set <n+1> online`, DVFS tuning)
 
 Vertical Scaling for Containers
