@@ -41,7 +41,7 @@ Lifecycle characteristics
 - Find (search, rank, select)
 - Bind (signup, subscribe, pay, use)
 
-
+```
     Service    
     ├── private
     ├── public
@@ -51,7 +51,7 @@ Lifecycle characteristics
     │   │   │   ├── standardised
     │   │   │   ├── proprietary
     │   │   ├── multi-user
-
+```
 
 
 ### Ecosystem

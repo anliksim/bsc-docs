@@ -64,11 +64,11 @@ Function definitions:
 - Export as function unit including dependencies
 
 Function calls:
-- if internal, rewrite
+- if internal, rewire
 - if I/O, replace
 - otherwise, leave as is
 
-Mondas:
+Monads:
 - Functional programming with side effects / side channels
 
 
@@ -78,8 +78,8 @@ Open research problems
 
 ## Deployment
 
-Implicit: web IDE
-Explicit: provider tools
+* Implicit: web IDE
+* Explicit: provider tools
 
 Provider specific
 - Authorisation (e.g. function calling another function)

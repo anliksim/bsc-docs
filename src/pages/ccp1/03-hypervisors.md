@@ -72,7 +72,7 @@ Hardware -> VMM -> Guest OS (VM1..n)
 
 Pros:
 - Better performance, scalability, stability
-- Ho host OS to maintain
+- No host OS to maintain
 
 Cons:
 - Hardware support limited, hypervisors have limited device drivers built-in

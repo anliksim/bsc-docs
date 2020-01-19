@@ -91,9 +91,20 @@ Configuration
 - Runtime parameters, memory, max duration, env variables
 
 
+12factor alignment: declarative setup, config in environment, backing services
+for state handling, disposability / fast startup & graceful shutdown
+
+
 ### System view
 
-Function: Developer-supplied code (app bundle)
-Function Encapsulation: Provider-supplied container image (runtime, libs)
-Function Execution: Provider-supplied infrastructure (hidden specs)
+* Function: Developer-supplied code (app bundle)
+* Function Encapsulation: Provider-supplied container image (runtime, libs)
+* Function Execution: Provider-supplied infrastructure (hidden specs)
 
+
+### Configuration
+
+* runtime environment (from list)
+* memory 128-512 MB; default 256
+* timeout 0.1-300 s; default 60
+* authoring: template or blank document

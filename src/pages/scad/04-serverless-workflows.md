@@ -89,9 +89,10 @@ Workflow execution-specific
 - Prefetching: Fetch function source upfront
     - Higher latency -> less storage cost
     - Lower latency -> more storage cost
-- Prewarning: Predictive function execution (via runtime analysis and function stats)
+- Prewarming: Predictive function execution (via runtime analysis and function stats)
     - Optimistic prewarning / low treshold -> more performance
     - Pessimistic prewarning / high threshold -> less cost
+    - Other domains: CPU branch predictor, proactive autoscalers, predictive caches
 
 
 
