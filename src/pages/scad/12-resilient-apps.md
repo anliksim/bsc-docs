@@ -1,7 +1,7 @@
 ---
 path: "/scad/resiliency"
 title: "SCAD Resilient Cloud Apps"
-date: "2020-01-18"
+date: "2020-01-19"
 draft: false
 author: Simon Anliker
 tags:
