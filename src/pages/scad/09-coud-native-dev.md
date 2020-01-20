@@ -5,7 +5,7 @@ date: "2020-01-05"
 draft: false
 author: Simon Anliker
 tags:
-  - scad
+- scad
 ---
 
 # Development for Clouds
@@ -13,6 +13,7 @@ tags:
 ## Approaches and Tools
 
 Conventional approach with separate dev and ops:
+
 - Long feedback cycles
 - Source-target incompatibilities
 - Slow upgrade of dev envs
@@ -21,16 +22,17 @@ Conventional approach with separate dev and ops:
 - Poor transaction support or complex deployments
 
 Development in and on the Cloud - shorten time to first dev cycle:
+
 - Always-online requirement alleviated with distributed sync (git)
 - Higher risk of vendor lock-in thus results may not be portable
-- Dev/ops separation of concerns lifted 
+- Dev/ops separation of concerns lifted
 
 New trends: Immutable infra, NoOps, DevSecOps, Web IDEs
-
 
 ## Models
 
 Service Description Languages
+
 - WSDL
 - WADL
 - USDL
@@ -44,10 +46,10 @@ Service Description Languages
 Top-down: generate code from description
 Bottom-up: generate description from code
 
-
 ## Publishing
 
 Bundle for deployment
+
 - Service implementation
 - Service description
 - Service configuration

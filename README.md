@@ -2,22 +2,30 @@
 
 For development
 
-    npm run develop
-    
+```sh
+npm run develop
+```
+
 To build and serve the production version
-    
-    npm run build
-    npm run serve
-    
+
+```
+npm run build
+npm run serve
+```
+
 To test the production version
 
-    firebase serve
+```
+firebase serve
+```
 
 To deploy the production version
 
-    firebase deploy
-
+```
+firebase deploy
+```
 
 ## Credits
 
-Thanks to [gatsbyjs](https://github.com/gatsbyjs) and the contributors of the example for [using-remark](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-remark).
+Thanks to [gatsbyjs](https://github.com/gatsbyjs) and the contributors of the
+example for [using-remark](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-remark).
