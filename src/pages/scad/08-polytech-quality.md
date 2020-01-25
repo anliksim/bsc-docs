@@ -5,7 +5,7 @@ date: "2020-01-05"
 draft: false
 author: Simon Anliker
 tags:
-  - scad
+- scad
 ---
 
 # Polytech Quality
@@ -13,14 +13,17 @@ tags:
 ## Polyglot/-tech Design
 
 Application modelling
+
 - TOSCA: Topology Orchestration Specification for Cloud Applications
 
 Enscapsulated application deployment
+
 - SAM: Serverless Application Model
 - CNAB: Cloud-Native Application Bundle
 - Helm charts
 
 Scripted application deployment
+
 - Imperative: Ansible, Chef, Heat
 - Declarative: Terraform, Puppet, Cloud Formation
 
@@ -28,4 +31,5 @@ Scripted application deployment
 
 Digital Artefact Observatory: Monitoring repositories
 
-Kubernetes Operators: lifecycle management of pods or complete applications, deployment, upgrades, dependencies, resource mapping for hybrid cloud
+Kubernetes Operators: lifecycle management of pods or complete applications,
+deployment, upgrades, dependencies, resource mapping for hybrid cloud
