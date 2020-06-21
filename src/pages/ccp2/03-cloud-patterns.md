@@ -100,4 +100,49 @@ Advanced: client-specific variants (browser, mobile)
 
 Track operational status
 
+Typical checks:
+* Resource consumption, load
+* External backing services
+* Latency, processing time
+* Expiration of certs
+
+## Health manager
+
+How to make sure desired number of instances are operational
+
+Desired vs actual state
+
+Monitor health status and automatically restart failed components
+
+
+## Queue load-leveling
+
+Deal with variable levels of load
+
+Requests received at variable rate, messages processes at a more consistent rate
+
+If peaks are excessive, request can be dropped (policing)
+
+Competing consumers/producers - consumer service pool processing messages from message queue
+
+## Event-Sourcing
+
+Track state and provide transactional features in a highly distributed system
+
+Store stream of events instead of directly updating the current state
+
+Represent the current state by replaying events, use materialized view to aggregate
+
+Provides eventual consistency for transactional data
+
+Gives full audit trails and history
+
+
+## CQRS
+
+Command query response segregation, to optimize read and write operations
+
+Provide separate paths for write (commands) and reads (query)
+
+Overload of one path should not influence the other, can be scaled independently
 
