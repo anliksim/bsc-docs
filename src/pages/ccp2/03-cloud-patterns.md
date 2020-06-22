@@ -1,7 +1,7 @@
 ---
 path: "/ccp2/cloudpatterns"
 title: "CCP2 Cloud Patterns"
-date: "2020-03-28"
+date: "2020-06-21"
 draft: false
 author: Simon Anliker
 tags:
